@@ -1,6 +1,14 @@
 #include<iostream>
 #include<string>
 struct Sales_data {
+    // 构造函数 重载
+    Sales_data() = default;
+    Sales_data( const std::string &s ) : bookNo(s) { }
+    Sales_data( const std::string &s, unsigned n, double p ) : 
+                bookNo(s) , units_sold(n), revenue(p*n) { };
+    Sales_data( std::istream &is ) {
+        read( is, *this );
+    }
     // 成员函数
     // 内部实现
     std::string isbn() const {
