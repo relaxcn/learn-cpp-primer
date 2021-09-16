@@ -1,5 +1,7 @@
 #include<string>
 class Screen {
+    // 友元类，不具有传递性
+    friend class Window_mgr;
 public:
     typedef std::string::size_type pos;
     // 构造函数
