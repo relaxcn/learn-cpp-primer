@@ -1,10 +1,8 @@
 #include<iostream>
 using namespace std;
+#include"7_23.h"
 int
 main()
 {
-    istream &is = cin;
-    if(is)
-        cout << "is is false" << endl;
-    cout << "end" <<endl;
+    Screen myscreen;
 }
