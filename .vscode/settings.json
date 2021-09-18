@@ -6,6 +6,7 @@
         "ios": "cpp",
         "system_error": "cpp",
         "xiosbase": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "iosfwd": "cpp"
     }
 }
