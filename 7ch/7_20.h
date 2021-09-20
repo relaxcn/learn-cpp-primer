@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+
 struct Sales_data {
 public:
     // 友元 可以访问私有成员变量
@@ -19,7 +20,7 @@ public:
         return bookNo;
     }
     // 在外部实现
-     Sales_data &combine( const Sales_data &);
+    Sales_data &combine( const Sales_data &);
 private:
     double avg_price() const;
     // 成员变量
