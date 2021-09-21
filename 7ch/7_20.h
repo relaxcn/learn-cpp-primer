@@ -1,3 +1,5 @@
+#ifndef H_7_20
+#define H_7_20
 #include<iostream>
 #include<string>
 
@@ -67,3 +69,4 @@ print( std::ostream &os, const Sales_data &item )
     << item.revenue << " " << item.avg_price();
     return os;
 }
+#endif
