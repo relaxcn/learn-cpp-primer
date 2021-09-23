@@ -1,6 +1,5 @@
-#ifndef EX8_1_H
-#define EX8_1_H
-
+#ifndef H_8_1
+#define H_8_1
 #include<iostream>
 #include<string>
 using namespace std;

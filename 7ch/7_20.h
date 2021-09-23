@@ -1,5 +1,8 @@
+#ifndef H_7_20
+#define H_7_20
 #include<iostream>
 #include<string>
+
 struct Sales_data {
 public:
     // 友元 可以访问私有成员变量
@@ -19,7 +22,7 @@ public:
         return bookNo;
     }
     // 在外部实现
-     Sales_data &combine( const Sales_data &);
+    Sales_data &combine( const Sales_data &);
 private:
     double avg_price() const;
     // 成员变量
@@ -66,3 +69,4 @@ print( std::ostream &os, const Sales_data &item )
     << item.revenue << " " << item.avg_price();
     return os;
 }
+#endif
