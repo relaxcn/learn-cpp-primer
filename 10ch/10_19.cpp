@@ -25,7 +25,7 @@ void bigests(vector<string> &words, vector<string>::size_type sz)
     // 和stable_sort一样，它会保持相同元素的原始顺序。
     auto wc = stable_partition(words.begin(), words.end(), 
         [sz](const string &s1){ return s1.size() > sz;});
-        
+
     auto count = words.end() - wc;
     cout << count << " " << make_plural(count, "word", "s") << " of length " << sz << " or longer" << endl;
     for_each(wc, words.end(),
