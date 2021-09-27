@@ -1,3 +1,4 @@
+// 目前完整的Sales_data类 头文件
 #ifndef H_7_20
 #define H_7_20
 #include<iostream>
