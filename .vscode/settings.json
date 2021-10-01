@@ -16,4 +16,5 @@
         "xutility": "cpp",
         "algorithm": "cpp"
     },
+    "terminal.integrated.fontSize" : 17
 }
