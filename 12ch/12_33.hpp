@@ -1,5 +1,5 @@
-#ifndef TEXT_QUERY_HPP
-#define TEXT_QUERY_HPP
+#ifndef EX12_33_HPP
+#define EX12_33_HPP
 #include<sstream>
 #include<fstream>
 #include<set>
@@ -56,12 +56,31 @@ public:
     using line_no = std::vector<std::string>::size_type;
     QueryResult(std::string s, std::shared_ptr<std::set<line_no>> p, std::shared_ptr<std::vector<std::string>> f) :
         sought(s), lines(p), file(f) { }
-
+    // 返回保存行号的set的一对迭代器
+    std::set<line_no>::iterator begin();
+    std::set<line_no>::iterator end();
+    std::shared_ptr<std::vector<std::string>> get_file();
 private:
     std::string sought; // query word string
     std::shared_ptr<std::set<line_no>> lines; // a set of lines number
     std::shared_ptr<std::vector<std::string>> file; // vector for lines of file
 };
+
+std::set<std::vector<std::string>::size_type>::iterator
+QueryResult::begin() {
+    auto iter = lines->begin();
+    return iter;
+}
+
+std::set<std::vector<std::string>::size_type>::iterator
+QueryResult::end() {
+    return lines->end();
+}
+
+std::shared_ptr<std::vector<std::string>>
+QueryResult::get_file() {
+    return file;
+}
 
 QueryResult
 TextQuery::query(const std::string &sought) const {

@@ -1,5 +1,7 @@
-#ifndef TEXT_QUERY_HPP
-#define TEXT_QUERY_HPP
+#ifndef EX_12_32_HPP
+#define EX_12_32_HPP
+// use StrBlob class
+#include"test.h"
 #include<sstream>
 #include<fstream>
 #include<set>
@@ -16,21 +18,24 @@ public:
     // query function
     QueryResult query(const std::string &) const;
 private:
-    // 使用 shared_ptr 用来类之间共享数据，不至于在作用域结束之后释放内存空间
     // the lines of string of reading from file.
-    std::shared_ptr<std::vector<std::string>> file;
+    // only use StrBlob object to instand 'file'
+    // std::shared_ptr<std::vector<std::string>> file;
+    StrBlob file;
     // 映射
     std::map<std::string, std::shared_ptr<std::set<line_no>>> wm;
 };
 
-TextQuery::TextQuery(std::ifstream& ifs) : file(new std::vector<std::string>) {
+TextQuery::TextQuery(std::ifstream& ifs) {
     std::string text;
     while (std::getline(ifs, text)) {
         // 填充vector
-        file->push_back(text);
+        // file->push_back(text);
+        file.push_back(text);
         // 填充Map
         // line number
-        int n = file->size() - 1;
+        // int n = file->size() - 1;
+        int n = file.size() - 1;
         std::istringstream line(text);
         std::string word;
         // process lines for each other
@@ -51,16 +56,16 @@ TextQuery::TextQuery(std::ifstream& ifs) : file(new std::vector<std::string>) {
 
 
 class QueryResult {
-    friend std::ostream& print(std::ostream&, const QueryResult&);
+    friend std::ostream& print(std::ostream&, QueryResult&);
 public:
     using line_no = std::vector<std::string>::size_type;
-    QueryResult(std::string s, std::shared_ptr<std::set<line_no>> p, std::shared_ptr<std::vector<std::string>> f) :
+    QueryResult(std::string s, std::shared_ptr<std::set<line_no>> p, StrBlob f) :
         sought(s), lines(p), file(f) { }
 
 private:
     std::string sought; // query word string
     std::shared_ptr<std::set<line_no>> lines; // a set of lines number
-    std::shared_ptr<std::vector<std::string>> file; // vector for lines of file
+    StrBlob file; // vector for lines of file
 };
 
 QueryResult
@@ -73,10 +78,10 @@ TextQuery::query(const std::string &sought) const {
         return QueryResult(sought, loc->second, file);
 }
 
-std::ostream &print(std::ostream &os, const QueryResult &qr) {
+std::ostream &print(std::ostream &os, QueryResult &qr) {
     os << qr.sought << " occurs " << qr.lines->size() << " " << (qr.lines->size() > 1 ? "times" : "time") << std::endl;
     for (auto num : *qr.lines) {
-        os << "\t(line " << num + 1 << ") " << qr.file->at(num) << std::endl;
+        os << "\t(line " << num + 1 << ") " << StrBlobPtr(qr.file, num).deref() << std::endl;
     }
     return os;
 }
