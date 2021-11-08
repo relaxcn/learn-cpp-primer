@@ -1,20 +1,6 @@
 {
     "files.associations": {
-        "xstring": "cpp",
-        "vector": "cpp",
-        "atomic": "cpp",
-        "ios": "cpp",
-        "system_error": "cpp",
-        "xiosbase": "cpp",
-        "string": "cpp",
-        "iosfwd": "cpp",
-        "iostream": "cpp",
-        "deque": "cpp",
-        "initializer_list": "cpp",
-        "list": "cpp",
-        "type_traits": "cpp",
-        "xutility": "cpp",
-        "algorithm": "cpp"
-    },
-    "terminal.integrated.fontSize" : 14
+        "istream": "cpp",
+        "xiosbase": "cpp"
+    }
 }
