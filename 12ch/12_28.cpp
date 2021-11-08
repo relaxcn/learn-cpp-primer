@@ -21,6 +21,7 @@ int main()
     std::string line;
     while ( std::getline(ifs, line) )
         vec.push_back(line);
+    // 遍历vector，填充Map
     for (unsigned index = 0; index != vec.size(); ++index) {
         std::istringstream sstream(vec.at(index));
         std::string word;
