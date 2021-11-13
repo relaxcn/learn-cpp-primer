@@ -29,13 +29,13 @@ String::String(const char *p)
 {
     std::size_t length =  strlen(p);
     range_initializer(p, p+length+1);
-    std::cout << "copy constructor" << std::endl;
+    std::cout << "initialiaztion function: String(const char *p)" << std::endl;
 }
 
 String::String(const String &rhs)
 {
     range_initializer(rhs.element, rhs.end);
-    std::cout << "String(const String&rhs)" << std::endl;
+    std::cout << "copy constructor" << std::endl;
 }
 
 String &String::operator=(const String &rhs)
