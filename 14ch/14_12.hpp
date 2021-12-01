@@ -31,9 +31,19 @@ std::istream& operator>>(std::istream& is, Book& book) {
     return is;
 }
 
-std::ostream& operator<<(std::ostream&, const Book&);
-bool operator==(const Book&, const Book&);
-bool operator!=(const Book&, const Book&);
+// 输出运算符
+std::ostream& operator<<(std::ostream& os, const Book& book) {
+    os << book.no_ << " " << book.name_ << " " << book.author_ << " " << book.pubdate_;
+    return os;
+}
+
+bool operator==(const Book& book1, const Book& book2) {
+    return book1.no_ == book2.no_;
+}
+
+bool operator!=(const Book& lsh, const Book& rsh) {
+    return !(lsh == rsh);
+}
 
 
 #endif // CP5_CH14_EX14_12_H
