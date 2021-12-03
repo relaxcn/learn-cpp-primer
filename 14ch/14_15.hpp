@@ -17,7 +17,8 @@ public:
     Book() = default;
     Book(unsigned no, std::string name, std::string author, std::string pubdate):no_(no), name_(name), author_(author), pubdate_(pubdate) { }
     Book(std::istream &in) { in >> *this; }
-
+    // 拷贝赋值运算符
+    Book& operator=(const Book&);
     Book &operator+=(const Book &rhs) {
         if (*this == rhs)
             this->number_ += rhs.number_;
